@@ -1,7 +1,7 @@
 {
-  "name": "node-swagger-api",
+  "name": "node-swagger-api-ts",
   "version": "1.0.0",
-  "description": "Simple REST API example based on Swagger with minimal dependencies",
+  "description": "Simple TypeScript REST API example based on Swagger with minimal dependencies",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
