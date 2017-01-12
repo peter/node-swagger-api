@@ -7,4 +7,5 @@ app.use(queryParser);
 app.use(bodyParser);
 app.use(serveStatic("resources/public"));
 
-app.listen(3000);
+var port = process.env["PORT"] || 3000;
+app.listen(port);
