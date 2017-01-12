@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "Simple TypeScript REST API example based on Swagger with minimal dependencies",
   "main": "index.js",
+  "postinstall": "npm run build",
   "scripts": {
+    "build": "$(npm bin)/tsc",
+    "start": "NODE_PATH=dist node dist/app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Peter Marklund",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "7.0.0",
+    "typescript": "2.1.4"
   }
 }

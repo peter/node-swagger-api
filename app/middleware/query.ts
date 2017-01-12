@@ -1,4 +1,4 @@
-var parseUrl = url = require("url").parse;
+var parseUrl = require("url").parse;
 var parseQuery = require("querystring").parse;
 
 // NOTE: Node query parser supports arrays but not foo[bar] nesting,

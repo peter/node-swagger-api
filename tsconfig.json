@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist/app",
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "baseUrl": "."
+  },
+  "include": [
+    "app/**/*.ts"
+  ]
+}

@@ -1,5 +1,4 @@
-var zip = function() {
-  var arrays = Array.prototype.slice.call(arguments);
+var zip = function(...arrays : any[]) {
   return arrays[0].map(function(_, i){
     return arrays.map(function(array) {
       return array[i]

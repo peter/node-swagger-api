@@ -1,4 +1,4 @@
-var parseUrl = url = require("url").parse;
+var parseUrl = require("url").parse;
 var fs = require("fs");
 var extname = require("path").extname;
 

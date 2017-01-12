@@ -1,4 +1,4 @@
-# Swagger based Node REST API
+# Swagger based Node/TypeScript REST API
 
 ## Minimizing dependencies
 
@@ -12,10 +12,22 @@ for middleware support and although connect is minimal and may be needed
 down the line depending on what API you are building and which middlewares
 you need I decided to remove that dependency for now.
 
+## Installation
+
+```
+npm install
+```
+
 ## Starting the Server
 
 ```
-NODE_PATH=. node index.js
+npm start
+```
+
+## Building TypeScript
+
+```
+npm run build
 ```
 
 ## Example CRUD API
@@ -53,6 +65,7 @@ app.server.on("request", function(req, res) {
 ## Resources
 
 * [Anatomy of an HTTP Transaction](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction)
+* [typescript getting error TS2304: cannot find name ' require'](http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require)
 
 ## TODO
 

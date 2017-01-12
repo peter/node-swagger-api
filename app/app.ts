@@ -25,10 +25,10 @@ var app = {
 
   handler: function(req, res) {
     req.on("error", function(err) {
-      console.err("req.on('error'): ", err);
+      console.error("req.on('error'): ", err);
     });
     res.on("error", function(err) {
-      console.err("res.on('error'): ", err);
+      console.error("res.on('error'): ", err);
     });
     runAllMiddleware(req, res, this.middlewares)
       .then(function() {
@@ -48,4 +48,4 @@ var app = {
 };
 
 
-module.exports = app;
+export default app;

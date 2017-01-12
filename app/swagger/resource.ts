@@ -1,4 +1,4 @@
-var listPath = function(name, id) {
+var listPath = function(name) {
   return "/" + name;
 };
 
@@ -6,7 +6,7 @@ var idPath = function(name) {
   return listPath(name) + "/{id}";
 };
 
-var endpoints = {
+let endpoints = {
   list: function(name) {
     return {
       "tags" : [name],
@@ -97,7 +97,7 @@ var endpoints = {
   }
 };
 
-var crudPaths = function(name) {
+var crudPaths : any = function(name) {
   var paths = {};
   paths[listPath(name)] = {
     "get" : endpoints.list(name),
@@ -111,6 +111,4 @@ var crudPaths = function(name) {
   return paths;
 };
 
-module.exports = {
-  crudPaths: crudPaths
-};
+export default crudPaths;

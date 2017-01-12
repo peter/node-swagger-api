@@ -1,12 +1,12 @@
 var u = require("app/util");
-var parseUrl = url = require("url").parse;
+var parseUrl = require("url").parse;
 
 var PARAM_NAME_PATTERN = /:[a-z0-9_]+/ig;
 var PARAM_VALUE_PATTERN = "([^/]+)";
 
 var parsePath = function(path) {
-  var paramNames = [];
-  var patternString = path.replace(PARAM_NAME_PATTERN, function(match) {
+  var paramNames : Array<string> = [];
+  var patternString = path.replace(PARAM_NAME_PATTERN, function(match : string) {
     paramNames.push(match.substring(1));
     return PARAM_VALUE_PATTERN;
   });
@@ -20,18 +20,24 @@ var parsePath = function(path) {
   }
 };
 
-var matchRoute = function(requestPath, route) {
+interface RouteMatch {
+  matches: boolean,
+  params?: Object
+};
+
+var matchRoute = function(requestPath, route) : RouteMatch {
   var path = parsePath(route.path);
   if (path && path.pattern) {
     var match = requestPath.match(path.pattern);
     if (match) {
       var paramValues = match.slice(1, path.paramNames.length+1);
-      return {params: u.zipObj(path.paramNames, paramValues)};
+      return {matches: true, params: u.zipObj(path.paramNames, paramValues)};
     } else {
-      return false;
+      return {matches: false};
     }
   } else {
-    return route.path === requestPath;
+    let matches = (route.path === requestPath);
+    return {matches: matches};
   }
 };
 
@@ -47,12 +53,12 @@ var groupByMethod = function(routes) {
 var router = function(routes) {
   var routesMap = groupByMethod(routes);
   return function(req, res) {
-    var requestPath = parseUrl(req.url).path,
-        params = null;
+    let requestPath : string = parseUrl(req.url).path,
+        params : Object | null = null;
     var route = (routesMap[req.method.toLowerCase()] || []).find(function(r) {
       var match = matchRoute(requestPath, r);
-      if (match && match.params) params = match.params;
-      return match;
+      if (match.params) params = match.params;
+      return match.matches;
     });
     if (route) {
       if (params) req.params = Object.assign((req.params || {}), params);
