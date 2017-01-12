@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Simple TypeScript REST API example based on Swagger with minimal dependencies",
   "main": "index.js",
-  "postinstall": "npm run build",
   "scripts": {
     "build": "$(npm bin)/tsc",
+    "postinstall": "npm run build",
     "start": "NODE_PATH=dist node dist/app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
