@@ -2,7 +2,7 @@
   "name": "node-swagger-api-ts",
   "version": "1.0.0",
   "description": "Simple TypeScript REST API example based on Swagger with minimal dependencies",
-  "engines" : {"node": "7.1.4"},
+  "engines" : {"node": "7.4.0"},
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/tsc",
