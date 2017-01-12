@@ -72,4 +72,3 @@ app.server.on("request", function(req, res) {
 * Logging
 * Handle swagger data types in query/body/params parsing
 * Swagger validation for query/body/params parsing
-* Convert to TypeScript
