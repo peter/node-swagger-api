@@ -1,13 +1,13 @@
-var listPath = function(name) {
+const listPath = function(name) {
   return "/" + name;
 };
 
-var idPath = function(name) {
+const idPath = function(name) {
   return listPath(name) + "/{id}";
 };
 
-let endpoints = {
-  list: function(name) {
+const endpoints = {
+  list(name) {
     return {
       "tags" : [name],
       "summary" : ("List " + name),
@@ -20,7 +20,7 @@ let endpoints = {
     };
   },
 
-  get: function(name) {
+  get(name) {
     return {
       "tags" : [name],
       "summary" : ("Get " + name),
@@ -39,7 +39,7 @@ let endpoints = {
     };
   },
 
-  create: function(name) {
+  create(name) {
     return {
       "tags" : [name],
       "summary" : ("Create " + name),
@@ -55,7 +55,7 @@ let endpoints = {
     };
   },
 
-  update: function(name) {
+  update(name) {
     return {
       "tags" : [name],
       "summary" : ("Update " + name),
@@ -77,7 +77,7 @@ let endpoints = {
     };
   },
 
-  delete: function(name) {
+  delete(name) {
     return {
       "tags" : [name],
       "summary" : ("Delete " + name),
@@ -97,8 +97,8 @@ let endpoints = {
   }
 };
 
-var crudPaths : any = function(name) {
-  var paths = {};
+function crudPaths(name) {
+  const paths = {};
   paths[listPath(name)] = {
     "get" : endpoints.list(name),
     "post" : endpoints.create(name)

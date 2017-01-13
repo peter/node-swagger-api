@@ -1,0 +1,23 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "curly": false,
+    "ordered-imports": "any",
+    "trailing-comma": {"multiline": "never", "singleline": "never"},
+    "arrow-parens": false,
+    "member-access": false,
+    "no-var-requires": false,
+    "radix": false,
+    "only-arrow-functions": "allow-named-functions",
+    "no-string-literal": false,
+    "object-literal-sort-keys": false,
+    "one-variable-per-declaration": false,
+    "interface-name": false,
+    "object-literal-key-quotes": "as-needed"
+  },
+  "jsRules": {
+    "curly": false
+  },
+  "rulesDirectory": [
+  ]
+}

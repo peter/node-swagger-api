@@ -1,8 +1,8 @@
-var http = require("http");
-var routes = require("app/routes");
-var router = require("app/router").router(routes);
+const http = require("http");
+const routes = require("app/routes");
+import router from "app/router";
 
-var runAllMiddleware = function(req, res, middlewares) {
+function runAllMiddleware(req, res, middlewares) {
   return Promise.all(middlewares.map(function(middleware) {
     return new Promise(function(resolve, reject) {
       middleware(req, res, function(err) {
@@ -16,14 +16,16 @@ var runAllMiddleware = function(req, res, middlewares) {
   }));
 };
 
-var app = {
+const app = {
   middlewares: [],
 
-  use: function(middleware) {
+  router: router(routes),
+
+  use(middleware) {
     this.middlewares.push(middleware);
   },
 
-  handler: function(req, res) {
+  handler(req, res) {
     req.on("error", function(err) {
       console.error("req.on('error'): ", err);
     });
@@ -32,7 +34,7 @@ var app = {
     });
     runAllMiddleware(req, res, this.middlewares)
       .then(function() {
-        router(req, res);
+        this.router(req, res);
       })
       .catch(function(err) {
         // TODO: we could handle all middleware errors here
@@ -41,11 +43,10 @@ var app = {
 
   server: http.createServer(),
 
-  listen: function(port) {
+  listen(port) {
     this.server.on("request", this.handler.bind(this));
     this.server.listen(port);
   }
 };
-
 
 export default app;

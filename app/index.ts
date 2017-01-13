@@ -1,11 +1,11 @@
 import app from "app/app";
-var queryParser = require("app/middleware/query").queryParser;
-var bodyParser = require("app/middleware/body").bodyParser;
-var serveStatic = require("app/middleware/static").serveStatic;
+import queryParser from "app/middleware/query";
+import bodyParser from "app/middleware/body";
+import serveStatic from "app/middleware/static";
 
 app.use(queryParser);
 app.use(bodyParser);
 app.use(serveStatic("resources/public"));
 
-var port = process.env["PORT"] || 3000;
+const port = process.env["PORT"] || 3000;
 app.listen(port);

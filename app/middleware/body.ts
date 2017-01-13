@@ -1,21 +1,21 @@
-var assert = require("assert");
+const assert = require("assert");
 
-var bodyParser = function(req, res, next) {
-  if (req.method == "POST" || req.method == "PUT") {
-    var data : Array<Buffer> = [];
-    req.on("data", function(chunk) {
+function bodyParser(req, res, next) {
+  if (req.method === "POST" || req.method === "PUT") {
+    const data: Buffer[] = [];
+    req.on("data", function(chunk: Buffer) {
       data.push(chunk);
     });
     req.on("end", function() {
       try {
-        let bodyString = Buffer.concat(data).toString();
-        let body = JSON.parse(bodyString);
+        const bodyString = Buffer.concat(data).toString();
+        const body = JSON.parse(bodyString);
         assert((typeof body === "object"), "JSON body must be an object");
         req.params = Object.assign((req.params || {}), body);
         next();
       } catch (e) {
         res.writeHead(400, {"Content-Type": "application/json"});
-        let body = {error: {type: "invalid_json_body", message: e.message}};
+        const body = {error: {type: "invalid_json_body", message: e.message}};
         res.end(JSON.stringify(body));
         next(e);
       }
@@ -25,6 +25,4 @@ var bodyParser = function(req, res, next) {
   }
 };
 
-module.exports = {
-  bodyParser: bodyParser
-};
+export default bodyParser;

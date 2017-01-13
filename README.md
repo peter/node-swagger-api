@@ -30,6 +30,12 @@ npm start
 npm run build
 ```
 
+## Linting with tslint
+
+```
+npm run lint
+```
+
 ## Example CRUD API
 
 ```bash
@@ -53,10 +59,10 @@ curl -X DELETE -i http://localhost:3000/v1/articles/123
 
 ```js
 app.server.on("request", function(req, res) {
-  var requestTime = process.hrtime();
+  const requestTime = process.hrtime();
   res.on("finish", function() {
-    var diff = process.hrtime(requestTime);
-    var responseTime = diff[0] * 1e3 + diff[1] * 1e-6;
+    const diff = process.hrtime(requestTime);
+    const responseTime = diff[0] * 1e3 + diff[1] * 1e-6;
     console.log("Response time: ", responseTime);
   });
 });

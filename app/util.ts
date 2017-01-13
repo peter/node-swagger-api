@@ -1,12 +1,12 @@
-var zip = function(...arrays : any[]) {
+function zip(...arrays: any[]) {
   return arrays[0].map(function(_, i){
     return arrays.map(function(array) {
-      return array[i]
+      return array[i];
     });
   });
 };
 
-var zipObj = function(keys, values) {
+function zipObj(keys, values) {
   return zip(keys, values).reduce(function(obj, tuple) {
     obj[tuple[0]] = tuple[1];
     return obj;
@@ -14,6 +14,6 @@ var zipObj = function(keys, values) {
 };
 
 module.exports = {
-  zip: zip,
-  zipObj: zipObj
+  zip,
+  zipObj
 };

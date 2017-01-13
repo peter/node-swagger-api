@@ -1,12 +1,12 @@
 import crudPaths from "app/swagger/resource";
 
-var RESOURCES = ["articles"];
+const RESOURCES = ["articles"];
 
-var resourcePaths = RESOURCES.reduce(function(paths, name) {
+const resourcePaths = RESOURCES.reduce(function(paths, name) {
   return Object.assign(paths, crudPaths(name));
 }, {});
 
-var swagger : any = {
+const swagger: any = {
   swagger: "2.0",
   info: {
     title: "Swagger based JSON REST API",
