@@ -5,7 +5,8 @@
     "outDir": "dist/app",
     "strictNullChecks": true,
     "alwaysStrict": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "compileOnSave": true
   },
   "include": [
     "app/**/*.ts"

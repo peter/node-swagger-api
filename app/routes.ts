@@ -1,6 +1,6 @@
-const dirname = require("path").dirname,
-    basename = require("path").basename,
-    swagger = require("app/swagger");
+const dirname = require("path").dirname;
+const basename = require("path").basename;
+import swagger from "app/swagger";
 
 // Changes syntax from /articles/{id} to /articles/:id
 const convertParamSyntax = function(path) {
@@ -38,4 +38,4 @@ const routes = Object.keys(swagger.paths).map(function(path) {
   });
 }).reduce(function(a, b) { return a.concat(b); }, []);
 
-module.exports = routes;
+export default routes;

@@ -13,7 +13,8 @@
     "object-literal-sort-keys": false,
     "one-variable-per-declaration": false,
     "interface-name": false,
-    "object-literal-key-quotes": "as-needed"
+    "object-literal-key-quotes": "as-needed",
+    "no-console": false
   },
   "jsRules": {
     "curly": false

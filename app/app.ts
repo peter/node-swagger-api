@@ -1,5 +1,5 @@
 const http = require("http");
-const routes = require("app/routes");
+import routes from "app/routes";
 import router from "app/router";
 
 function runAllMiddleware(req, res, middlewares) {

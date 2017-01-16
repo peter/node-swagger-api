@@ -48,4 +48,4 @@ const swagger: any = {
   })
 };
 
-module.exports = swagger;
+export default swagger;
