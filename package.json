@@ -7,9 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "$(npm bin)/tsc",
-    "postinstall": "npm run build",
+    "compile": "$(npm bin)/tsc",
     "start": "NODE_PATH=dist node dist/app/index.js",
+    "build": "npm run compile && npm run lint",
+    "postinstall": "npm run build",
     "lint": "find app -iname '*.ts' | xargs $(npm bin)/tslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

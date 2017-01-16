@@ -33,10 +33,10 @@ const app = {
       console.error("res.on('error'): ", err);
     });
     runAllMiddleware(req, res, this.middlewares)
-      .then(function() {
+      .then(() => {
         this.router(req, res);
       })
-      .catch(function(err) {
+      .catch((err) => {
         // TODO: we could handle all middleware errors here
       });
   },

@@ -4,7 +4,12 @@ const parseUrl = require("url").parse;
 const PARAM_NAME_PATTERN = /:[a-z0-9_]+/ig;
 const PARAM_VALUE_PATTERN = "([^/]+)";
 
-const parsePath = function(path) {
+interface ParsedPath {
+  pattern: RegExp;
+  paramNames: string[];
+};
+
+const parsePath = function(path: string): ParsedPath | null {
   const paramNames: string[] = [];
   const patternString = path.replace(PARAM_NAME_PATTERN, function(match: string) {
     paramNames.push(match.substring(1));
@@ -20,12 +25,26 @@ const parsePath = function(path) {
   }
 };
 
+export interface Route {
+  path: string;
+  method: string;
+  handler: Function;
+  swagger?: Object;
+};
+
 interface RouteMatch {
   matches: boolean;
   params?: Object;
 };
 
-const matchRoute = function(requestPath, route): RouteMatch {
+interface RouteMap {
+  get?: Route[];
+  post?: Route[];
+  put?: Route[];
+  delete?: Route[];
+};
+
+const matchRoute = function(requestPath: string, route: Route): RouteMatch {
   const path = parsePath(route.path);
   if (path && path.pattern) {
     const match = requestPath.match(path.pattern);
@@ -41,7 +60,7 @@ const matchRoute = function(requestPath, route): RouteMatch {
   }
 };
 
-const groupByMethod = function(routes) {
+const groupByMethod = function(routes: Route[]): RouteMap {
   return routes.reduce(function(map, route) {
     const method = route.method.toLowerCase();
     map[method] = map[method] || [];
@@ -50,7 +69,7 @@ const groupByMethod = function(routes) {
   }, {});
 };
 
-const router = function(routes) {
+const router = function(routes: Route[]) {
   const routesMap = groupByMethod(routes);
   return function(req, res) {
     const requestPath: string = parseUrl(req.url).path;
