@@ -1,8 +1,7 @@
 # Swagger based Node/TypeScript REST API
 
 This is a simple REST API implemented in TypeScript on Node.js with minimal
-dependencies. An earlier version of this API without TypeScript (JavaScript only)
-is available at [node-swagger-api-js](https://github.com/peter/node-swagger-api-js).
+dependencies.
 
 ## Minimizing dependencies
 
