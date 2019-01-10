@@ -3,6 +3,8 @@
 This is a simple REST API implemented in TypeScript on Node.js with minimal
 dependencies.
 
+*NOTE:* I have a more recent Node.js/TypeScript example API [here](https://github.com/peter/casino-lobby).
+
 ## Minimizing dependencies
 
 I strive to minimize dependencies and rely on the Node core library instead where
